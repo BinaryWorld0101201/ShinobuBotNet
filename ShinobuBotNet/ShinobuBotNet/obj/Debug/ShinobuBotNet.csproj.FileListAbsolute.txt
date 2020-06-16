@@ -1,0 +1,6 @@
+C:\Users\Эксперт\Desktop\ShinobuBotNet\ShinobuBotNet\obj\Debug\ShinobuBotNet.csprojAssemblyReference.cache
+C:\Users\Эксперт\Desktop\ShinobuBotNet\ShinobuBotNet\obj\Debug\ShinobuBotNet.csproj.CoreCompileInputs.cache
+C:\Users\Эксперт\Desktop\ShinobuBotNet\ShinobuBotNet\bin\Debug\ShinobuBotNet.exe
+C:\Users\Эксперт\Desktop\ShinobuBotNet\ShinobuBotNet\bin\Debug\ShinobuBotNet.pdb
+C:\Users\Эксперт\Desktop\ShinobuBotNet\ShinobuBotNet\obj\Debug\ShinobuBotNet.exe
+C:\Users\Эксперт\Desktop\ShinobuBotNet\ShinobuBotNet\obj\Debug\ShinobuBotNet.pdb

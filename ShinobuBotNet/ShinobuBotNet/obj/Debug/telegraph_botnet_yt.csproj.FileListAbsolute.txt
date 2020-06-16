@@ -1,0 +1,11 @@
+C:\Users\Николай\source\repos\telegraph_botnet_yt\telegraph_botnet_yt\obj\Debug\telegraph_botnet_yt.csprojAssemblyReference.cache
+C:\Users\Николай\source\repos\telegraph_botnet_yt\telegraph_botnet_yt\bin\Debug\Infernium botnet.exe
+C:\Users\Николай\source\repos\telegraph_botnet_yt\telegraph_botnet_yt\bin\Debug\Infernium botnet.pdb
+C:\Users\Николай\source\repos\telegraph_botnet_yt\telegraph_botnet_yt\obj\Debug\Infernium botnet.exe
+C:\Users\Николай\source\repos\telegraph_botnet_yt\telegraph_botnet_yt\obj\Debug\Infernium botnet.pdb
+C:\Users\Эксперт\Desktop\telegraph_botnet_yt\telegraph_botnet_yt\obj\Debug\telegraph_botnet_yt.csprojAssemblyReference.cache
+C:\Users\Эксперт\Desktop\telegraph_botnet_yt\telegraph_botnet_yt\obj\Debug\telegraph_botnet_yt.csproj.CoreCompileInputs.cache
+C:\Users\Эксперт\Desktop\telegraph_botnet_yt\telegraph_botnet_yt\obj\Debug\Infernium botnet.exe
+C:\Users\Эксперт\Desktop\telegraph_botnet_yt\telegraph_botnet_yt\obj\Debug\Infernium botnet.pdb
+C:\Users\Эксперт\Desktop\telegraph_botnet_yt\telegraph_botnet_yt\bin\Debug\Infernium botnet.exe
+C:\Users\Эксперт\Desktop\telegraph_botnet_yt\telegraph_botnet_yt\bin\Debug\Infernium botnet.pdb
