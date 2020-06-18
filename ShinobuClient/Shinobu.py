@@ -26,3 +26,5 @@ print(Fore.GREEN + '[!] - URL set')
 response = requests.get(url + 'GetUsers.php')
 userslist = json.load(response.text)
 
+for user in userslist():
+	print(user['user'])
