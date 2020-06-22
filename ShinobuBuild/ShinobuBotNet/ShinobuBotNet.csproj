@@ -60,13 +60,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="cheak.cs" />
+    <Compile Include="API.cs" />
     <Compile Include="cmd.cs" />
     <Compile Include="configs.cs" />
     <Compile Include="cMain.cs" />
-    <Compile Include="connect.cs" />
     <Compile Include="functions.cs" />
-    <Compile Include="GetInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="web.cs" />
   </ItemGroup>
@@ -82,6 +80,9 @@
       <Link>.editorconfig</Link>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DDOS\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

