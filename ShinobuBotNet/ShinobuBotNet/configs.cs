@@ -2,7 +2,7 @@
 {
     class configs
     {
-        public static string server = "http://host/";
+        public static string server = "http://localhost/";
 
         public static string spliter = "{split}";
 

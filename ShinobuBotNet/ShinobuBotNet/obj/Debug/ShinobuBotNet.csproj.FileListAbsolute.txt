@@ -9,3 +9,8 @@ C:\Users\Николай\Desktop\ShinobuBotNet\ShinobuBotNet\bin\Debug\ShinobuBot
 C:\Users\Николай\Desktop\ShinobuBotNet\ShinobuBotNet\obj\Debug\ShinobuBotNet.csprojAssemblyReference.cache
 C:\Users\Николай\Desktop\ShinobuBotNet\ShinobuBotNet\obj\Debug\ShinobuBotNet.exe
 C:\Users\Николай\Desktop\ShinobuBotNet\ShinobuBotNet\obj\Debug\ShinobuBotNet.pdb
+C:\Users\Николай\Documents\GitHub\ShinobuBotNet\ShinobuBotNet\ShinobuBotNet\bin\Debug\ShinobuBotNet.exe
+C:\Users\Николай\Documents\GitHub\ShinobuBotNet\ShinobuBotNet\ShinobuBotNet\bin\Debug\ShinobuBotNet.pdb
+C:\Users\Николай\Documents\GitHub\ShinobuBotNet\ShinobuBotNet\ShinobuBotNet\obj\Debug\ShinobuBotNet.csprojAssemblyReference.cache
+C:\Users\Николай\Documents\GitHub\ShinobuBotNet\ShinobuBotNet\ShinobuBotNet\obj\Debug\ShinobuBotNet.exe
+C:\Users\Николай\Documents\GitHub\ShinobuBotNet\ShinobuBotNet\ShinobuBotNet\obj\Debug\ShinobuBotNet.pdb
