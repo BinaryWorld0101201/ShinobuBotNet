@@ -6,19 +6,11 @@
     * [Cheak Connect](#cheak_connect)
 
 ###### Create Bot:
-<API.connect();>
+```API.connect();```
 
 ###### Get ID:
 <string id = API.Get_ID();>
 
 ###### Cheak Connect:
-<string cheak = API.cheak_connect();
-if(cheak == "yes")
-{
-
-}
-else
-{
-
-}
->
+```string cheak = API.cheak_connect();```
+>return yes or no
