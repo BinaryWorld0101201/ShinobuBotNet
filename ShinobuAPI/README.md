@@ -3,7 +3,7 @@
 *  Bots
 	* [Create bot](#create-bot)
     * [Get ID](#get-id)
-    * [Cheak Connect](#cheak_connect)
+    * [Cheak Connect](#cheak-connect)
 
 ###### Create Bot:
 ```API.connect();```
