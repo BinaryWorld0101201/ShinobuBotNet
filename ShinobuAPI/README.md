@@ -4,8 +4,8 @@
 	* [Create bot](#create-bot)
     * [Get ID](#get-id)
     * [Cheak Connect](#cheak-connect)
-    * [Create Cheak File](#create-cheak-file)
     * [Get Command](#get-command)
+    * [Create Cheak File](#create-cheak-file)
 * Client
     * [Get Users List](#get-users-list)
     * [Send Command](#send-command)
@@ -29,9 +29,6 @@
 ###### Get Users List:
 ```string userslist = API.GetUsers();```
 
-###### Get Users List:
-```string userslist = API.GetUsers();```
-
-###### Get Users List:
+###### Send Command:
 ```string result = API.SendCommand(id,type,content);```
 >you don't have to write" content"
