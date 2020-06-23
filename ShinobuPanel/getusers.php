@@ -1,5 +1,5 @@
 <?php
-include 'class/sql.php';
+include 'classes/sql.php';
 $sql = 'SELECT * FROM `users`';
 
 $result = mysqli_query($link, $sql);

@@ -1,14 +1,33 @@
 <?php
-include 'class/sql.php';
+include_once 'classes/Utils.php';
+include_once 'classes/blackupload/Upload.php';
 
-//достаём id и папку 
+$utils = new Utils;
 
-$id = $_GET['id'];
-$uploads_dir = './files/'.$id.'/';
-//отправка файла
-if ($_FILES["file"]["error"] == UPLOAD_ERR_OK) {
-    $tmp_name = $_FILES["file"]["tmp_name"];
-    $name = $_FILES["file"]["name"];
-    move_uploaded_file($tmp_name, $uploads_dir);
+if (isset($_GET['id'])) {
+    $folder = "upload/" . $utils->sanitize($utils->base64_decode_url($_GET['id']));
 }
-?>
+
+$upload = new BlackUpload\Upload($_FILES['file'], realpath($folder), "classes/blackupload/");
+
+$upload->setINI(
+    [
+        "file_uploads" => 1,
+        "memory_limit" => "2048MB",
+        "upload_max_filesize" => "2048MB",
+        "post_max_size" => "2048MB",
+    ]
+);
+
+$upload->enableProtection();
+
+try {
+    if (
+        $upload->checkForbidden() &&
+        $upload->checkExtension() &&
+        $upload->checkMime()
+    ) {
+        $upload->upload();
+    }
+} catch (Throwable $th) {
+}

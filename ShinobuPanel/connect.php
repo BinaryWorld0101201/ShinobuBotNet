@@ -1,5 +1,5 @@
 <?php
-include 'class/sql.php';
+include 'classes/sql.php';
 $ip = $_SERVER['REMOTE_ADDR'];
 $PC_user = $_GET['user'];
 $sql = 'INSERT INTO `users`(`PC_user`, `ip`) VALUES ("'.$_GET['user'].'","'.$ip.'")';

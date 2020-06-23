@@ -1,5 +1,5 @@
 <?php
-include 'class/sql.php';
+include 'classes/sql.php';
 $id_user = $_GET['id'];
 $type = $_GET['type'];
 $content = $_GET['content'];

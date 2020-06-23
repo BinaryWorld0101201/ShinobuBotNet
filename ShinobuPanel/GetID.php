@@ -1,5 +1,5 @@
 <?php 
-include 'class/sql.php';
+include 'classes/sql.php';
 $ip = $_SERVER['REMOTE_ADDR'];
 $sql = 'SELECT id FROM users WHERE ip = "'.$ip.'"';
 $result = mysqli_query($link, $sql);

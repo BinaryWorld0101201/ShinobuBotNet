@@ -1,5 +1,5 @@
 <?php
-include 'class/sql.php';
+include 'classes/sql.php';
 $id = $_GET['id'];
 
 $sql = 'SELECT * FROM command WHERE id_user="'.$id.'"';
