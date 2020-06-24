@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API.cs" />
+    <Compile Include="cheaker.cs" />
     <Compile Include="cmd.cs" />
     <Compile Include="configs.cs" />
     <Compile Include="cMain.cs" />

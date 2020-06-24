@@ -27,7 +27,7 @@ namespace ShinobuBotNet
 
         public static string cheak_connect()
         {
-            if (System.IO.File.Exists("c0n0ct.ch"))
+            if (System.IO.File.Exists(configs.CheakFile))
             {
                 return "yes";
             }
@@ -40,7 +40,7 @@ namespace ShinobuBotNet
 
         public static void creat_cheak_File()
         {
-            System.IO.File.Create("c0n0ct.ch");
+            System.IO.File.Create(configs.CheakFile);
         }
 
         public static string GetCommand(string id)

