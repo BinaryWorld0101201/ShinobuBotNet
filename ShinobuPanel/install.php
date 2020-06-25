@@ -25,3 +25,7 @@ if($ansver == 'Yes')
         echo 'the command table install error';
     }
 }
+else
+{
+    echo 'error';
+}
