@@ -2,6 +2,12 @@
 /**
  * @name BlackUplod
  * @description PHP Library to help you build your own file sharing website.
+ * @version 1.0
+ * @category File_Upload
+ * @package Blackupload
+ * @author Black.Hacker <farisksa79@protonmail.com>
+ * @license MIT
+ * @link https://github.com/BlackHacker511/BlackUpload
  */
 namespace BlackUpload;
 
