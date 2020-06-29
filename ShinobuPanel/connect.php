@@ -6,7 +6,7 @@ $ip = $_SERVER['REMOTE_ADDR'];
 //get username
 $PC_user = $_GET['user'];
 //connct user to db
-$sql = 'INSERT INTO `users`(`PC_user`, `ip`, `online`) VALUES ("'.$PC_user.'","'.$ip.'","true")';
+$sql = 'INSERT INTO `users`(`PC_user`, `ip`, `online`) VALUES ("'.$PC_user.'","'.$ip.'","Online")';
 //querty
 $result = mysqli_query($link, $sql);
 if($result == true)

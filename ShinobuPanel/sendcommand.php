@@ -1,57 +1,61 @@
 <?php
 include 'classes/sql.php';
+include 'classes/configs/config.php';
 $id_user = $_GET['id'];
 $type = $_GET['type'];
 $content = $_GET['content'];
-if($content == null)
+$password = $_GET['password'];
+if($password == $Panel_password)
 {
-    $deletecommand = 'DELETE FROM command WHERE id_user = "'.$id_user.'"';
-    $deletresult = mysqli_query($link, $deletecommand);
 
-    if($deletresult == true)
+    if($content == null)
     {
-        echo 'old command delet'.'<br/>';
-        $sql = 'INSERT INTO `command`(`id_user`, `commandType`, `commandContent`) VALUES ("'.$id_user.'","'.$type.'","")';
-        $result = mysqli_query($link, $sql);
+        $deletecommand = 'DELETE FROM command WHERE id_user = "'.$id_user.'"';
+        $deletresult = mysqli_query($link, $deletecommand);
 
-        if ($result == true) {
-            echo 'command send!'.'<br/>';
+        if($deletresult == true)
+        {
+            $sql = 'INSERT INTO `command`(`id_user`, `commandType`, `commandContent`) VALUES ("'.$id_user.'","'.$type.'","")';
+            $result = mysqli_query($link, $sql);
+
+            if ($result == true) {
+                echo 'command send!'.'<br/>';
+            }
+
+            else
+            {
+            echo 'ERROR!'.'<br/>';
+            }
         }
 
         else
         {
-            echo 'ERROR!'.'<br/>';
+            echo 'old command not delete!'.'<br/>';
+            echo 'ERROR!';
+        }
+
+    }
+
+    else
+    {
+        $deletecommand = 'DELETE FROM command WHERE id_user = "'.$id_user.'"';
+        $deletresult = mysqli_query($link, $deletecommand);
+    
+
+        $sql = 'INSERT INTO command SET id_user = "'.$id_user.'", commandType = "'.$type.'", commandContent="'.$content.'"';
+        $result = mysqli_query($link, $sql);
+
+        if ($result == True) {
+            print("command send!");
+        }
+        else
+        {
+            print("error");
         }
     }
 
-    else
-    {
-        echo 'old command not delete!'.'<br/>';
-        echo 'ERROR!';
-    }
-
 }
-
 else
 {
-    $deletecommand = 'DELETE FROM command WHERE id_user = "'.$id_user.'"';
-    $deletresult = mysqli_query($link, $deletecommand);
-    if($deletresult == true)
-    {
-        echo 'old command delet';
-    }
-    
-
-    $sql = 'INSERT INTO command SET id_user = "'.$id_user.'", commandType = "'.$type.'", commandContent="'.$content.'"';
-    $result = mysqli_query($link, $sql);
-
-    if ($result == True) {
-        print("command send!");
-    }
-    else
-    {
-        print("error");
-    }
+    echo 'password error!';
 }
-
-?>
