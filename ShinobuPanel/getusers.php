@@ -12,3 +12,7 @@ if($password == $Panel_password)
         echo 'ID: '.$row['id'].' , IP: '.$row['ip'].' , User Name: '.$row['PC_user'].' , Online: '.$row['online'].'<br/>';
     }
 }
+else
+{
+    echo 'password error!';
+}

