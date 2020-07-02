@@ -9,7 +9,7 @@ namespace ShinobuBotNet
 
         public cmd(string input_content)
         {
-            string[] cmd_cnt = Regex.Split(input_content, configs.spliter);
+            string[] cmd_cnt = Regex.Split(input_content, config.spliter);
 
             ComType = cmd_cnt[0];
             ComContent = cmd_cnt[1];

