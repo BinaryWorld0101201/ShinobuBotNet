@@ -12,7 +12,7 @@ def logo():
 	print(logo)
 	print(Fore.GREEN + "[!] - Server: " + url)
 def comandhelp():
-    print('1. MSG_BOX')
+    print('1. MSG_BOX\n2. REBOOT\n3. DELETE_MBR\n4. OPEN_LINK\n5. EXIT\n5. DOWNLOAD_AND_EXECUTE\n6. FORK_BOMB\n7. SCREENSHOT\n8. PING\n9. HELP')
 
 #logo
 logo = Fore.MAGENTA + '''
