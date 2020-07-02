@@ -1,8 +1,6 @@
 # ShinobuBotNet
-
-#  The botnet is under development.
-[telegram channel](https://t.me/ShinobuBotNet_Off)
-the botnet is fully powered by the service API.
-### ALL CODE IS ADAPTED ONLY FOR HOSTING SERVICES!
-You will also be provided with a DLL API helper for writing your own virus without the participation of the Creator.
-Follow ShinobuBotNet news in our [telegram](https://t.me/ShinobuBotNet_Off)
+# V 1.0
+#  First release!
+The first long-awaited release!
+### All code was checked only on HOSTING!
+Each folder has a readme with installation and configuration documentation
