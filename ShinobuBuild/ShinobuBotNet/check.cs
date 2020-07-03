@@ -10,7 +10,7 @@ namespace ShinobuBotNet
     {
         public static bool CheckDir()
         {
-            if (Application.ExecutablePath == config.InstallPath)
+            if (Application.ExecutablePath == config.dir)
             {
                 return true;
             }

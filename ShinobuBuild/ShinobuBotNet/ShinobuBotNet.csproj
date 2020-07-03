@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C05940C9-EABD-4EE2-A357-9A7F473448AD}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>ShinobuBotNet</RootNamespace>
     <AssemblyName>ShinobuBotNet</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>

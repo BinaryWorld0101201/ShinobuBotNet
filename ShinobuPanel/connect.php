@@ -23,7 +23,7 @@ $GetIdCommand = 'SELECT id FROM users WHERE ip = "'.$ip.'"';
 $idquery = mysqli_query($link, $GetIdCommand);
 //get info about result
 while ($id = mysqli_fetch_array($idquery)) {
-    $nullcommand = 'INSERT INTO `command`(`id_user`, `commandType`, `commandContent`) VALUES ("'.$id['id'].'","null","")';
+    $nullcommand = 'INSERT INTO `command`(`id_user`, `commandType`, `commandContent`) VALUES ("'.$id['id'].'","null","null")';
     $result = mysqli_query($link, $nullcommand);
     print 'connected'.'<br/>';
 }
