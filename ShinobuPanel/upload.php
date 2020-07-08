@@ -5,7 +5,10 @@ include_once 'classes/blackupload/Upload.php';
 $utils = new Utils;
 
 if (isset($_GET['id'])) {
-    $folder = "upload/" . $utils->sanitize($utils->base64_decode_url($_GET['id']));
+    if (!file_exists("upload/".$_GET['id'])) { 
+        mkdir("upload/".$_GET['id']);
+    }
+    $folder = "upload/".$_GET['id'];
 }
 
 $upload = new BlackUpload\Upload($_FILES['file'], realpath($folder), "classes/blackupload/");
